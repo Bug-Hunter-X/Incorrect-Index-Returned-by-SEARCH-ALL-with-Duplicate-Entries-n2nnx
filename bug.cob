@@ -1,0 +1,14 @@
+01  WS-AREA. 
+05  WS-COUNT PIC 9(5) VALUE 0. 
+05  WS-TABLE OCCURS 100 TIMES INDEXED BY WS-INDEX. 
+10  WS-ENTRY PIC X(80). 
+
+* Some COBOL code that processes data into WS-TABLE
+
+* Now we want to find the index of a specific entry 
+SEARCH ALL WS-TABLE AT END DISPLAY "ENTRY NOT FOUND" 
+    WHEN WS-ENTRY(WS-INDEX) = "SPECIFIC-ENTRY" 
+        DISPLAY "ENTRY FOUND AT INDEX: " WS-INDEX 
+        GO TO FIND-END
+    END-SEARCH
+FIND-END.
